@@ -15,7 +15,7 @@ const corsOptions = {
         'https://romulusai.up.railway.app/'  // Your backend domain
     ],
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    allowedHeaders: ['Content-Type', 'Authorization'],
+    allowedHeaders: '*', // Allow all headers
     credentials: true,
 };
 
