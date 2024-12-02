@@ -9,15 +9,12 @@ const PORT = process.env.PORT || 5001;
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
 
 const corsOptions = {
-    origin: [
-        'https://dogflix.fun',  // Your actual frontend domain
-        'https://www.dogflix.fun',  // Your actual frontend domain
-        'https://romulusai.up.railway.app/'  // Your backend domain
-    ],
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    allowedHeaders: '*', // Allow all headers
+    origin: '*', // Temporarily allow all origins
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
+    allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true,
 };
+
 
 // Apply CORS with defined options
 app.use(cors(corsOptions));
