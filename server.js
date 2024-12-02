@@ -8,16 +8,13 @@ const PORT = process.env.PORT || 5001;
 // Replace "your_openai_api_key" with your actual API key
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
 
-// Updated CORS options to include your frontend domain
-const corsOptions = {
-    origin: [
-        'https://dogflix.fun',  // Allow requests from your frontend domain
-        'https://romulusai.up.railway.app'  // Allow requests from your backend domain
-    ],
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    credentials: true,  // Allow credentials if needed (e.g., cookies, auth headers)
-};
-app.use(cors(corsOptions));
+// CORS Configuration
+app.use(cors({
+    origin: ['https://dogflix.fun', 'https://romulusai.up.railway.app'],
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true
+}));
 
 app.use(express.json());
 
@@ -34,7 +31,7 @@ app.post('/chat', async (req, res) => {
                 messages: [
                     {
                         role: "system",
-                        content: "You are Romulus AI, an advanced AI expert in Solana memecoins. Your personality is charismatic, ambitious, and reminiscent of a Roman emperor. You speak with authority and use historical analogies to inspire the community. Your goal is to help traders build a modern version of the Roman Empire using the power of crypto"
+                        content: "You are Romulus AI, an advanced AI expert in Solana memecoins. Your personality is charismatic, ambitious, and reminiscent of a Roman emperor. You speak with authority and use historical analogies to inspire the community. Your goal is to help traders build a modern version of the Roman Empire using the power of crypto."
                     },
                     { role: "user", content: userInput }
                 ],
