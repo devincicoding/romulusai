@@ -11,7 +11,8 @@ const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
 const corsOptions = {
     origin: [
         'https://dogflix.fun',  // Your actual frontend domain
-        'https://romulusai.up.railway.app'  // Your backend domain
+        'https://www.dogflix.fun',  // Your actual frontend domain
+        'https://romulusai.up.railway.app/'  // Your backend domain
     ],
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     allowedHeaders: ['Content-Type', 'Authorization'],
