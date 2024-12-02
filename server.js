@@ -3,10 +3,10 @@ const axios = require('axios');
 const cors = require('cors');
 
 const app = express();
-const PORT = 5001;
+const PORT = process.env.PORT || 5001;
 
-// Replace "your_openai_api_key" with your actual API key
-const OPENAI_API_KEY = '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';
+// Load API key from environment variable
+const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
 
 // Updated CORS to allow your frontend domain
 const corsOptions = {
@@ -30,7 +30,7 @@ app.post('/chat', async (req, res) => {
         const response = await axios.post(
             'https://api.openai.com/v1/chat/completions',
             {
-                model: "ft:gpt-3.5-turbo-0125:personal:custom-gpt:AZtDpj7B", // Update with your fine-tuned model
+                model: "ft:gpt-3.5-turbo-0125:personal:custom-gpt:AZtDpj7B", // Update with your fine-tuned model ID
                 messages: [
                     {
                         role: "system",
