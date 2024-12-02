@@ -5,17 +5,17 @@ const cors = require('cors');
 const app = express();
 const PORT = process.env.PORT || 5001;
 
-// Load API key from environment variable
+// Replace "your_openai_api_key" with your actual API key
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
 
-// Updated CORS to allow your frontend domain
+// Updated CORS options to include your frontend domain
 const corsOptions = {
     origin: [
-        'https://dogflix.fun/',  // Replace with your actual frontend domain
+        'https://dogflix.fun',  // Allow requests from your frontend domain
         'https://romulusai.up.railway.app'  // Allow requests from your backend domain
     ],
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    credentials: true,
+    credentials: true,  // Allow credentials if needed (e.g., cookies, auth headers)
 };
 app.use(cors(corsOptions));
 
@@ -30,7 +30,7 @@ app.post('/chat', async (req, res) => {
         const response = await axios.post(
             'https://api.openai.com/v1/chat/completions',
             {
-                model: "ft:gpt-3.5-turbo-0125:personal:custom-gpt:AZtDpj7B", // Update with your fine-tuned model ID
+                model: "ft:gpt-3.5-turbo-0125:personal:custom-gpt:AZtDpj7B",
                 messages: [
                     {
                         role: "system",
